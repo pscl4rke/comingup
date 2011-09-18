@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cat examples/2011-sep.up1 | LC_ALL=C sort | python presentation/plain.py
+
