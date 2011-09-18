@@ -1,0 +1,40 @@
+
+
+These lines at the top of the file are ignored because
+they do not contain a pipe character.  This gives a
+fair amount of flexibility in inserting comments.
+
+Below is a line that contains a pipe character, so
+it gets interpreted by the calendar tool.  The name
+of the 'event' is on the right-hand side of the pipe.
+On the left-hand side would be the options.  However
+there are no options.  This means there are no
+restrictions for when the event appears, so it will
+appear every day.
+
+| Hello
+
+Now if the lookahead option is added on the left-hand
+side it will cause the 'event' to be anounced in
+advance.  The option specifies the number of days
+ahead it will match.
+
+lookahead=5 | Hello   (advance warning)
+
+If an exact date is given then we will be able to
+restrict the event to that point.  Note that the first
+Monday event won't be shown until the day itself,
+because there is no lookahead.
+
+isodate=2011-09-18 | It is a Sunday
+isodate=2011-09-19 | It is a Monday
+isodate=2011-09-19 lookahead=4 | It is still a Monday
+
+Now let's add a bit more power with recurring events.
+It is possible to specify the weekday that matches
+an event.  Sunday=0, ..., Saturday=6
+
+lookahead=14 weekday=0 | This is always on a Sunday
+
+
+
