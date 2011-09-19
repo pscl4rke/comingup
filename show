@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Set defaults:
+comingup_ROOTFILE=""
+comingup_ROOTPROCESSOR="cat"
+comingup_INSTALLPATH="$HOME/comingup"
+
+# Now load user settings:
+test -e "$HOME/.cominguprc" && source "$HOME/.cominguprc"
+
+# Check validity:
+if [ ! -e "$comingup_ROOTFILE" ]
+then
+    echo "Root file '$comingup_ROOTFILE' does not exist"
+    exit 1
+fi
+
+cd "$comingup_INSTALLPATH"
+$comingup_ROOTPROCESSOR "$comingup_ROOTFILE" \
+    | LC_ALL=C sort \
+    | python presentation/taskpaper.py
+
