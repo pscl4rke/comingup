@@ -49,6 +49,8 @@ def matches(date, note):
 
 
 def gettime(note):
+    if 'isotime' in note:
+        return note['isotime']
     return "##:##"
 
 
