@@ -8,6 +8,10 @@ comingup_INSTALLPATH="$HOME/comingup"
 # Now load user settings:
 test -e "$HOME/.cominguprc" && source "$HOME/.cominguprc"
 
+# If settings are given as arguments then load them:
+# (only one arg currently)
+test -z "$1" || source "$1"
+
 # Check validity:
 if [ ! -e "$comingup_ROOTFILE" ]
 then
